@@ -1,98 +1,275 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
-  <title>Rapport Police Municipale</title>
+  <title>Rapport PM - Isneauville</title>
 
   <style>
-
     body {
       font-family: Arial, sans-serif;
-      background: #eef2f7;
-      padding: 30px;
+      background: #dfe5ee;
+      margin: 0;
+      padding: 20px;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
+    .toolbar {
+      max-width: 900px;
+      margin: 0 auto 20px auto;
       background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-      color: #1f2937;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 8px;
-      border: 1px solid #bbb;
-      box-sizing: border-box;
-    }
-
-    textarea {
-      min-height: 220px;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     }
 
     button {
-      margin-top: 20px;
-      padding: 12px 22px;
+      padding: 10px 18px;
       border: 0;
-      border-radius: 10px;
+      border-radius: 8px;
       background: #1f2937;
       color: white;
       font-weight: bold;
       cursor: pointer;
-      margin-right: 10px;
+      margin-right: 8px;
     }
 
-    button:hover {
-      background: #111827;
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      margin: 0 auto 20px auto;
+      padding: 18mm;
+      box-sizing: border-box;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+      page-break-after: always;
     }
 
+    .header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid #111;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .small {
+      font-size: 12px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin: 25px 0;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 15px;
+      margin-top: 25px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .box {
+      border: 1px solid #333;
+      padding: 10px;
+      margin-top: 10px;
+      min-height: 35px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 260px;
+      border: 1px solid #444;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+    }
+
+    .signature {
+      margin-top: 60px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .toolbar {
+        display: none;
+      }
+
+      .page {
+        box-shadow: none;
+        margin: 0;
+        width: 210mm;
+        min-height: 297mm;
+        page-break-after: always;
+      }
+    }
   </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<div class="toolbar">
+  <button onclick="window.print()">Imprimer / Export PDF</button>
+  <button onclick="window.location.href='index.html'">Retour MC</button>
+</div>
 
-  <h1>Rapport Police Municipale</h1>
+<div class="page">
 
-  <label>Objet du rapport</label>
+  <div class="header">
+    <div>
+      <div class="logo">POLICE MUNICIPALE</div>
+      <div>Commune d’Isneauville</div>
+      <div class="small">Seine-Maritime</div>
+    </div>
+    <div class="small">
+      Rapport n° <strong id="numeroRapport"></strong><br>
+      Référence MC : <strong id="numeroMC"></strong><br>
+      Date : <span id="dateRapport"></span>
+    </div>
+  </div>
 
-  <input placeholder="Exemple : Troubles à l'ordre public">
+  <h1>Rapport de constatation</h1>
 
-  <label>Destinataire</label>
+  <p>
+    Nous soussigné(s), <strong>[GRADE] [NOM Prénom]</strong>,
+    Agent(s) de Police Judiciaire Adjoint(s), agréé(s) et assermenté(s),
+    en résidence administrative à la mairie d’Isneauville,
+    en fonction à la Police Municipale d’Isneauville,
+    agissant en tenue et de service conformément aux ordres reçus de Madame le Maire d’Isneauville,
+    avons l’honneur de vous rendre compte des faits suivants.
+  </p>
 
-  <input placeholder="Monsieur le Maire / Directeur / OPJ">
+  <p>
+    Vu les articles 21, 21-1, 21-2 et 429 du Code de Procédure Pénale ;<br>
+    Vu les articles L.2212-1 et suivants du Code Général des Collectivités Territoriales ;<br>
+    Vu l’article L.511-1 du Code de la Sécurité Intérieure ;<br>
+    Vu les arrêtés municipaux et règlements en vigueur sur le territoire communal.
+  </p>
 
-  <label>Rapport</label>
+  <h2>Objet</h2>
+  <div class="box" id="nature"></div>
 
-  <textarea placeholder="Rédiger ici le rapport circonstancié..."></textarea>
+  <h2>Requérant</h2>
+  <div class="box" id="requerant"></div>
 
-  <button onclick="window.print()">
-    Imprimer / Export PDF
-  </button>
+  <h2>Victime</h2>
+  <div class="box" id="victime"></div>
 
-  <button onclick="window.location.href='index.html'">
-    Retour Main Courante
-  </button>
+  <h2>Auteur / Mis en cause</h2>
+  <div class="box" id="auteur"></div>
+
+  <h2>Constatations et circonstances</h2>
+  <textarea id="corpsRapport"></textarea>
 
 </div>
+
+<div class="page">
+
+  <div class="header">
+    <div>
+      <div class="logo">POLICE MUNICIPALE</div>
+      <div>Commune d’Isneauville</div>
+    </div>
+    <div class="small">
+      Rapport n° <strong id="numeroRapport2"></strong><br>
+      Page 2
+    </div>
+  </div>
+
+  <h2>Suites données ou proposées</h2>
+  <textarea id="suitesRapport"></textarea>
+
+  <h2>Observations complémentaires</h2>
+  <textarea placeholder="Observations complémentaires, éléments d’analyse, mesures administratives ou judiciaires envisagées..."></textarea>
+
+  <p style="margin-top:40px;">
+    Rapport rédigé pour servir et valoir ce que de droit.
+  </p>
+
+  <p>
+    Fait et clos à Isneauville, le <span id="dateCloture"></span>.
+  </p>
+
+  <div class="signature">
+    <div>
+      L’agent rédacteur<br><br><br>
+      Signature
+    </div>
+
+    <div>
+      Vu et transmis<br>
+      Le Chef de Service<br><br><br>
+      Signature
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const mc = JSON.parse(localStorage.getItem("mc_source_rapport") || "{}");
+  const now = new Date();
+
+  function deuxChiffres(n) {
+    return String(n).padStart(2, "0");
+  }
+
+  function numeroRapport() {
+    const datePart =
+      now.getFullYear() +
+      deuxChiffres(now.getMonth() + 1) +
+      deuxChiffres(now.getDate());
+
+    const alea = Math.floor(Math.random() * 9000 + 1000);
+    return "RAP-" + datePart + "-" + alea;
+  }
+
+  const rap = numeroRapport();
+
+  document.getElementById("numeroRapport").textContent = rap;
+  document.getElementById("numeroRapport2").textContent = rap;
+  document.getElementById("numeroMC").textContent = mc.numeroMC || "MC non renseignée";
+  document.getElementById("dateRapport").textContent = now.toLocaleDateString("fr-FR");
+  document.getElementById("dateCloture").textContent = now.toLocaleDateString("fr-FR");
+
+  document.getElementById("nature").textContent = mc.nature || "";
+
+  document.getElementById("requerant").innerHTML =
+    (mc.requerant?.nom || "") + " " +
+    (mc.requerant?.prenom || "") + "<br>" +
+    (mc.requerant?.adresse || "") + "<br>" +
+    (mc.requerant?.telephone || "") + "<br>" +
+    (mc.requerant?.mail || "");
+
+  document.getElementById("victime").innerHTML =
+    (mc.victime?.nom || "") + " " +
+    (mc.victime?.prenom || "") + "<br>" +
+    (mc.victime?.adresse || "") + "<br>" +
+    (mc.victime?.telephone || "") + "<br>" +
+    (mc.victime?.mail || "");
+
+  document.getElementById("auteur").innerHTML =
+    (mc.auteur?.nom || "") + " " +
+    (mc.auteur?.prenom || "") + "<br>" +
+    (mc.auteur?.adresse || "") + "<br>" +
+    (mc.auteur?.telephone || "") + "<br>" +
+    (mc.auteur?.mail || "");
+
+  document.getElementById("corpsRapport").value = mc.corps || "";
+  document.getElementById("suitesRapport").value = mc.suites || "";
+</script>
 
 </body>
 </html>
