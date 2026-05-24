@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rapport Police Municipale</title>
+
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f7;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #1f2937;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #bbb;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      min-height: 220px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 22px;
+      border: 0;
+      border-radius: 10px;
+      background: #1f2937;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    button:hover {
+      background: #111827;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Rapport Police Municipale</h1>
+
+  <label>Objet du rapport</label>
+
+  <input placeholder="Exemple : Troubles à l'ordre public">
+
+  <label>Destinataire</label>
+
+  <input placeholder="Monsieur le Maire / Directeur / OPJ">
+
+  <label>Rapport</label>
+
+  <textarea placeholder="Rédiger ici le rapport circonstancié..."></textarea>
+
+  <button onclick="window.print()">
+    Imprimer / Export PDF
+  </button>
+
+  <button onclick="window.location.href='index.html'">
+    Retour Main Courante
+  </button>
+
+</div>
+
+</body>
+</html>
