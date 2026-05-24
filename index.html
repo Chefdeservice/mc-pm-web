@@ -1,132 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
-  <title>Main Courante Police Municipale</title>
-
+  <title>Main Courante PM - Isneauville</title>
   <style>
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #eef2f7;
-      margin: 0;
-      padding: 30px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-      margin-top: 0;
-      color: #1f2937;
-    }
-
-    h2 {
-      color: #374151;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 8px;
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 14px;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #bbb;
-      border-radius: 8px;
-      font-size: 15px;
-      box-sizing: border-box;
-    }
-
-    textarea {
-      min-height: 150px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .bloc {
-      background: #f9fafb;
-      padding: 18px;
-      border-radius: 14px;
-      margin-top: 20px;
-      border: 1px solid #ddd;
-    }
-
-    details {
-      margin-top: 20px;
-      background: #f9fafb;
-      padding: 18px;
-      border-radius: 14px;
-      border: 1px solid #ddd;
-    }
-
-    summary {
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    button {
-      margin-top: 25px;
-      padding: 12px 22px;
-      border: 0;
-      border-radius: 10px;
-      background: #1f2937;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-
-    button:hover {
-      background: #111827;
-    }
-
+    body { font-family: Arial, sans-serif; background:#eef2f7; margin:0; padding:30px; }
+    .container { max-width:1100px; margin:auto; background:white; padding:30px; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,0.12); }
+    h1 { margin-top:0; color:#1f2937; }
+    h2 { color:#374151; border-bottom:1px solid #ddd; padding-bottom:8px; }
+    label { font-weight:bold; display:block; margin-top:14px; }
+    input, select, textarea { width:100%; padding:10px; margin-top:5px; border:1px solid #bbb; border-radius:8px; font-size:15px; box-sizing:border-box; }
+    textarea { min-height:150px; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .bloc { background:#f9fafb; padding:18px; border-radius:14px; margin-top:20px; border:1px solid #ddd; }
+    details { margin-top:20px; background:#f9fafb; padding:18px; border-radius:14px; border:1px solid #ddd; }
+    summary { font-weight:bold; cursor:pointer; font-size:18px; }
+    button { margin-top:25px; padding:12px 22px; border:0; border-radius:10px; background:#1f2937; color:white; font-weight:bold; cursor:pointer; margin-right:10px; }
+    button:hover { background:#111827; }
+    .info { background:#e8f0ff; border:1px solid #bcd0ff; padding:14px; border-radius:12px; margin-bottom:20px; color:#1f2937; }
   </style>
-
 </head>
 
 <body>
-
 <div class="container">
 
   <h1>Main Courante Police Municipale</h1>
 
-  <div class="grid">
+  <div class="info">
+    Commune : <strong>Isneauville (Seine-Maritime)</strong><br>
+    Cette main courante pourra être transformée en rapport distinct avec son propre numéro.
+  </div>
 
+  <div class="grid">
     <div>
       <label>Numéro de main courante</label>
-      <input id="numero" readonly>
+      <input id="numeroMC" readonly>
     </div>
-
     <div>
       <label>Date de création</label>
       <input id="dateCreation" readonly>
     </div>
-
   </div>
 
   <label>Nature de l’intervention</label>
-
-  <select>
+  <select id="nature">
     <option>Tapage nocturne</option>
     <option>Différend de voisinage</option>
     <option>Ivresse publique manifeste</option>
@@ -143,108 +60,110 @@
   </select>
 
   <div class="bloc">
-
     <h2>Requérant</h2>
-
     <div class="grid">
-
-      <input placeholder="Nom">
-
-      <input placeholder="Prénom">
-
-      <input placeholder="Adresse">
-
-      <input placeholder="Téléphone">
-
-      <input placeholder="Mail">
-
+      <input id="reqNom" placeholder="Nom">
+      <input id="reqPrenom" placeholder="Prénom">
+      <input id="reqAdresse" placeholder="Adresse">
+      <input id="reqTelephone" placeholder="Téléphone">
+      <input id="reqMail" placeholder="Mail">
     </div>
-
   </div>
 
   <details>
-
     <summary>Victime — ouvrir si nécessaire</summary>
-
     <div class="grid">
-
-      <input placeholder="Nom">
-
-      <input placeholder="Prénom">
-
-      <input placeholder="Adresse">
-
-      <input placeholder="Téléphone">
-
-      <input placeholder="Mail">
-
+      <input id="victNom" placeholder="Nom">
+      <input id="victPrenom" placeholder="Prénom">
+      <input id="victAdresse" placeholder="Adresse">
+      <input id="victTelephone" placeholder="Téléphone">
+      <input id="victMail" placeholder="Mail">
     </div>
-
   </details>
 
   <details>
-
     <summary>Auteur / mis en cause — ouvrir si nécessaire</summary>
-
     <div class="grid">
-
-      <input placeholder="Nom">
-
-      <input placeholder="Prénom">
-
-      <input placeholder="Adresse">
-
-      <input placeholder="Téléphone">
-
-      <input placeholder="Mail">
-
+      <input id="autNom" placeholder="Nom">
+      <input id="autPrenom" placeholder="Prénom">
+      <input id="autAdresse" placeholder="Adresse">
+      <input id="autTelephone" placeholder="Téléphone">
+      <input id="autMail" placeholder="Mail">
     </div>
-
   </details>
 
   <label>Corps de la main courante</label>
-
-  <textarea placeholder="Rédiger ici les faits, constatations, actions effectuées, chronologie, personnes rencontrées..."></textarea>
+  <textarea id="corpsMC" placeholder="Rédiger ici les faits, constatations, actions effectuées, chronologie, personnes rencontrées..."></textarea>
 
   <label>Suites à donner</label>
+  <textarea id="suitesMC" placeholder="Transmission OPJ, information hiérarchie, surveillance, rappel réglementaire, procédure, classement..."></textarea>
 
-  <textarea placeholder="Transmission OPJ, information hiérarchie, surveillance, rappel réglementaire, procédure, classement..."></textarea>
-
-  <button onclick="ouvrirRapport()">
-    Transformer en rapport
-  </button>
-
-  <button onclick="window.print()">
-    Imprimer / Exporter PDF
-  </button>
+  <button onclick="genererRapport()">Générer un rapport</button>
+  <button onclick="window.print()">Imprimer / Exporter PDF</button>
 
 </div>
 
 <script>
-
   const now = new Date();
 
-  document.getElementById('dateCreation').value =
-    now.toLocaleDateString('fr-FR') + ' ' +
-    now.toLocaleTimeString('fr-FR', {
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-
-  const numero =
-    'MC-' +
-    now.getFullYear() +
-    String(now.getMonth() + 1).padStart(2, '0') +
-    String(now.getDate()).padStart(2, '0') +
-    '-' +
-    Math.floor(Math.random() * 9000 + 1000);
-
-  document.getElementById('numero').value = numero;
-
-  function ouvrirRapport() {
-    window.location.href = "rapport.html";
+  function deuxChiffres(n) {
+    return String(n).padStart(2, "0");
   }
 
+  function genererNumeroMC() {
+    const datePart =
+      now.getFullYear() +
+      deuxChiffres(now.getMonth() + 1) +
+      deuxChiffres(now.getDate());
+
+    const alea = Math.floor(Math.random() * 9000 + 1000);
+    return "MC-" + datePart + "-" + alea;
+  }
+
+  document.getElementById("dateCreation").value =
+    now.toLocaleDateString("fr-FR") + " " +
+    now.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+
+  document.getElementById("numeroMC").value = genererNumeroMC();
+
+  function genererRapport() {
+    const mc = {
+      commune: "Isneauville (Seine-Maritime)",
+      numeroMC: document.getElementById("numeroMC").value,
+      dateCreation: document.getElementById("dateCreation").value,
+      nature: document.getElementById("nature").value,
+
+      requerant: {
+        nom: document.getElementById("reqNom").value,
+        prenom: document.getElementById("reqPrenom").value,
+        adresse: document.getElementById("reqAdresse").value,
+        telephone: document.getElementById("reqTelephone").value,
+        mail: document.getElementById("reqMail").value
+      },
+
+      victime: {
+        nom: document.getElementById("victNom").value,
+        prenom: document.getElementById("victPrenom").value,
+        adresse: document.getElementById("victAdresse").value,
+        telephone: document.getElementById("victTelephone").value,
+        mail: document.getElementById("victMail").value
+      },
+
+      auteur: {
+        nom: document.getElementById("autNom").value,
+        prenom: document.getElementById("autPrenom").value,
+        adresse: document.getElementById("autAdresse").value,
+        telephone: document.getElementById("autTelephone").value,
+        mail: document.getElementById("autMail").value
+      },
+
+      corps: document.getElementById("corpsMC").value,
+      suites: document.getElementById("suitesMC").value
+    };
+
+    localStorage.setItem("mc_source_rapport", JSON.stringify(mc));
+    window.location.href = "rapport.html";
+  }
 </script>
 
 </body>
